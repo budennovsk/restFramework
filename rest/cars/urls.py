@@ -10,9 +10,9 @@ router.register(r'', CarViewSet, basename='cc')
 
 urlpatterns = [
     # path('', views.all_category, name='all_category'),
-    # path('', CarAPIList.as_view()),
-    # path('<int:pk>/', CarAPIViews.as_view()),
+    path('', CarAPIList.as_view()),
+    path('<int:pk>/', CarAPIViews.as_view()),
     path('api/', include(router.urls)),
-    path('', views.index_html, name='index_html'),
-    path('s/', ProfileList.as_view()),
+    # path('', views.index_html, name='index_html'),
+    # path('s/', ProfileList.as_view()),
 ]
