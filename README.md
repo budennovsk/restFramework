@@ -6,7 +6,7 @@
 <li><h3>Отображение и добавление на странице</h3></li>
 </ul>
 
-</h3>list API </h3>
+<h3>list API </h3>
 
 <img src="https://github.com/budennovsk/restFramework/assets/97764479/48118ad9-8a3e-4ef6-8050-86d50d877169" width=70% height=70%>
 <br>
