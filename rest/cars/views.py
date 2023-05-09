@@ -11,30 +11,30 @@ from .serializers import CarSerializer
 
 
 class CarViewSet(viewsets.ModelViewSet):
+    """ Отображать домашнюю страницу и добавленные посты по id"""
     serializer_class = CarSerializer
 
-    def get_queryset(self):
-
+    def get_queryset(self: object) -> Response:
         pk = self.kwargs.get('pk')
         if not pk:
             return Car.objects.all()[:2]
         return Car.objects.filter(pk=pk)
 
     @action(methods=['get'], detail=False)
-    def category(self, request):
-
-
+    def category(self, request: object) -> Response:
         cats = Category.objects.all()
 
         return Response({'cats': [i.name for i in cats]})
 
 
 class CarAPIViews(generics.RetrieveUpdateDestroyAPIView):
+    """ Отображение списка на странице с возможностью добавления"""
     queryset = Car.objects.all()
     serializer_class = CarSerializer
 
 
 class CarAPIList(generics.ListCreateAPIView):
+    """ Отображение списка на странице"""
     queryset = Car.objects.all()
     serializer_class = CarSerializer
 
@@ -50,9 +50,10 @@ class CarAPIList(generics.ListCreateAPIView):
 #     return render(request, 'cars/about.html')
 
 class ProfileList(APIView):
+    """ Отображение на странице"""
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'cars/about.html'
 
-    def get(self, request):
+    def get(self, request) -> Response:
         queryset = Car.objects.all()
         return Response({'profiles': queryset})
